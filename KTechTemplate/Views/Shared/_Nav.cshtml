@@ -1,0 +1,37 @@
+﻿<nav class="navbar navbar-expand-sm navbar-dark bg-primary" id="navbarmain">
+    <a class="navbar-brand" asp-controller="Home" asp-area="" asp-action="Index"><img src="~/images/KTechLogoW.png" alt="KTechTemplate" style="width: 72px; height: 30px;" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain"  aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse bg-primary" id="navbarMain">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Admin</a>
+              <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item"  asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a>
+                  <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a>
+                  <a class="dropdown-item" asp-area="Admin" asp-controller="Order" asp-action="">Orders</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" asp-area="Admin" asp-controller="Companies" asp-action="Index">Companies</a>
+                  <a class="dropdown-item" href="#">Audit</a>
+              </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">
+                    Manager Orders
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <partial name="_LoginPartial" />
+        </ul>
+    </div>
+</nav>

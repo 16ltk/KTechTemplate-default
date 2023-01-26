@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Kutloano Technologies",
+  "classifications": [ "Web", ".NetCore MVC Template" ],
+  "identity": "KTechWebTemplate", // Unique name for this template
+  "name": "KTechWebTemplate",
+  "shortName": "KTechWebTemplate", // Short name that can be used on the cli
+  "tags": {
+    "language": "C#"
+  },
+  "sourceName": "KTechTemplate", // Will replace the string 'KTechTemplate' with the value provided via -n.
+  "preferNameDirectory": "true",
+  "symbols": {
+    "ConnectionString": {
+      "type": "parameter",
+      "defaultValue": " ",
+      "replaces": "KTechWebTemplateConnection"
+    }
+  },
+
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [ "**/[Bb]in/**", "**/[Oo]bj/**", ".template.config/**/*", "**/*.lock.json", ".git/**" ]
+        }
+      ]
+    }
+  ],
+  "include": [ "KTechTemplateDAL**/*", "KTechTemplate.sln" ]
+}

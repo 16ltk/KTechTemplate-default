@@ -1,0 +1,82 @@
+﻿@using KTechTemplateDAL
+@model KTechTemplateDAL.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>Details for: Product</h4>
+    <nav class="nav nav-pills bg-primary mb-2">
+        <div class="m-1">
+            <a asp-action="Edit" asp-area="Admin" class="btn btn-sm btn-light" asp-route-id="@Model.Id"><i class="far fa-edit"></i>Edit</a>
+        </div>
+        <div class="m-1">
+            <a asp-action="Index" asp-area="Admin" class="btn btn-sm btn-light"><i class="far fa-arrow-alt-circle-left"></i>Back</a>
+        </div>
+    </nav><hr />
+    <dl class="row pt-2 pb-2 pl-2">
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.ISBN)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.ListPrice)
+        </dt>
+        <dd class = "col-sm-9">
+            @Model.ListPrice.ToString("c")
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-9">
+            @Model.Price.ToString("c")
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Price50)
+        </dt>
+        <dd class = "col-sm-9">
+            @Model.Price50.ToString("c")
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Price100)
+        </dt>
+        <dd class = "col-sm-9">
+            @Model.Price100.ToString("c")
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+        <dd class = "col-sm-9">
+            @if(Model != null && Model.ImageUrl != null)
+            {
+                <img disabled class="img-fluid" src="~/images/products/@Model.ImageUrl" width="200" height="200" style="border:1px solid #a71930; border-radius: 5px"/>
+            }
+            else
+            {
+                <img disabled class="img-fluid" src="~/images/logo-inverse.png" width="200" height="200" id="ImageUrl" style="border:1px solid #a71930; border-radius: 5px" />
+            }
+        </dd>
+    </dl>
+</div>

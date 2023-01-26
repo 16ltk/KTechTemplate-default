@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="m-1">
+    <h4>List of Categories</h4> 
+</div>
+<nav class="nav nav-pills bg-primary rounded-top">
+    <div class="m-1">
+       <a asp-controller="Category" asp-action="Create" style="cursor: pointer;" class="btn btn-sm btn-light"><i class="fa fa-plus"></i> Create</a>
+    </div>   
+</nav>
+<div class="">
+    <table class="table table-sm table-striped table-hover">
+        <thead class="bg-light">
+            <tr>
+                <th class="border-bottom border-info border-top-0">
+                    Category Name
+                </th>
+                <th class="border-bottom border-info border-top-0">
+                    Display Order
+                </th>
+                <th class="border-bottom border-info border-top-0"></th>
+            </tr>
+        </thead>
+        <tbody class="pl-2 pr-2">
+            @foreach(var obj in Model)
+            {
+                <tr>
+                    <td>
+                        @obj.Name
+                    </td>
+                    <td>
+                        @obj.DisplayOrder
+                    </td>
+                    <td>
+                        <div class="btn-group-xs float-right" style="white-space:nowrap;">
+                            <a asp-controller="Category" asp-action="Edit" asp-area="Admin" asp-route-id="@obj.Id" class="btn btn-smx btn-outline-success removeforprinter"><i class="fa fa-edit"></i>Edit</a>
+                            <a asp-controller="Category" asp-action="Details" asp-area="Admin" asp-route-id="@obj.Id"  class="btn btn-smx btn-outline-primary removeforprinter"><i class="far fa-file-alt"></i>Details</a>
+                            <a asp-controller="Category" asp-action="Delete" asp-area="Admin" asp-route-id="@obj.Id" class="btn btn-smx btn-outline-danger removeforprinter"><i class="fa fa-trash"></i>Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

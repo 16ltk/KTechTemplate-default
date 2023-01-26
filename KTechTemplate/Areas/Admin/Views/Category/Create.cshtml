@@ -1,0 +1,28 @@
+﻿@model Category
+
+<div class="m-1">
+    <h4>Create Categories</h4> 
+</div>
+<form method="post">
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+         <div class="mb-3">
+            <label asp-for="DisplayOrder"></label>
+            <input asp-for="DisplayOrder" class="form-control"/>
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+    <nav class="nav nav-pills bg-primary mb-2">
+            <div class="m-1">
+                <button type="submit" class="btn btn-sm btn-light"><i class="fa fa-save text-info"></i>Save</button>
+            </div>
+            <div class="m-1">
+                <a asp-controller="Category" asp-action="Index" class="btn btn-sm btn-light"><i class="far fa-arrow-alt-circle-left"></i>Back</a>
+            </div>
+        </nav>
+</form>
+
+
+

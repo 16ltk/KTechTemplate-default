@@ -1,0 +1,54 @@
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@model PagingModel
+
+@{
+    string extraparameters = "";
+    string routeparameters = "";
+    foreach (var par in Model.ParameterList)
+    {
+        extraparameters = extraparameters + "&" + par.RouteName + "=" + par.RouteValue;
+        routeparameters = routeparameters + par.RouteName + "=" + par.RouteValue + ",";
+    }
+    routeparameters = "new { rows = 10, page = 1," + routeparameters.Remove(routeparameters.Length - 1, 1);
+}
+
+<div class="d-flex flex-wrap justify-content-between">
+    <div class="d-flex">
+        @Html.PagedListPager(
+                          Model.Model, page => Url.Action() + "/?page=" + page + "&rows=" + Model.Rows + extraparameters,
+                          new PagedListRenderOptions
+                          {
+                              UlElementClasses = new[] { "d-flex flex-wrap list-unstyled" },
+                              LiElementClasses = new[] { "page-item" },
+                              PageClasses = new[] { "page-link" },
+                              DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                              DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
+                              DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded,
+                              DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
+                              DisplayLinkToNextPage = PagedListDisplayMode.Never,
+                              LinkToFirstPageFormat = "First Page",
+                              LinkToLastPageFormat = "Last Page"
+                          }
+                   )
+    </div>
+    <div class="dropdown mb-2">
+        <a class="btn btn-light dropdown-toggle" href="#" data-toggle="dropdown">
+            Show @Model.Rows rows
+        </a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item btn btn-default" href="@(Url.Action() + "/?page=1&rows=10" + extraparameters)">
+                Show 10 rows
+            </a>
+            <a class="dropdown-item btn btn-default" href="@(Url.Action() + "/?page=1&rows=20" + extraparameters)">
+                Show 20 rows
+            </a>
+            <a class="dropdown-item btn btn-default" href="@(Url.Action() + "/?page=1&rows=50" + extraparameters)">
+                Show 50 rows
+            </a>
+            <a class="dropdown-item btn btn-default" href="@(Url.Action() + "/?page=1&rows=100" + extraparameters)">
+                Show 100 rows
+            </a>
+        </div>
+    </div>
+</div>

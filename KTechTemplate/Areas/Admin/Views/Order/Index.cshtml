@@ -1,0 +1,68 @@
+﻿@model IEnumerable<KTechTemplateDAL.Models.OrderHeader>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="m-1">
+    <h4>List of Orders</h4>
+</div>
+
+<div class="">
+    <table class="table table-sm table-striped table-hover">
+        <thead class="bg-light">
+            <tr>
+                <th class="border-bottom border-info border-top-0">
+                    ID
+                </th>
+                <th class="border-bottom border-info border-top-0">
+                    Name
+                </th>
+                <th class="border-bottom border-info border-top-0">
+                    Phone Number
+                </th>
+                <th class="border-bottom border-info border-top-0">
+                    Email
+                </th>
+                <th class="border-bottom border-info border-top-0">
+                    Order Status
+                </th>
+                <th class="border-bottom border-info border-top-0">
+                    Order Total
+                </th>
+                <th class="border-bottom border-info border-top-0"></th>
+            </tr>
+        </thead>
+        <tbody class="pl-2 pr-2">
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>
+                        @obj.Id
+                    </td>
+                    <td>
+                        @obj.Name
+                    </td>
+                    <td>
+                        @obj.PhoneNumber
+                    </td>
+                    <td>
+                        @obj.ApplicationUser.Email
+                    </td>
+                    <td>
+                        @obj.OrderStatus
+                    </td>
+                    <td>
+                        @obj.OrderTotal
+                    </td>
+                    <td>
+                        <div class="btn-group-xs float-right" style="white-space:nowrap;">
+                            <a asp-controller="Product" asp-action="Edit" asp-area="Admin" asp-route-id="@obj.Id" class="btn btn-smx btn-outline-success removeforprinter"><i class="fa fa-edit"></i>Edit</a>
+                            <a asp-controller="Product" asp-action="Details" asp-area="Admin" asp-route-id="@obj.Id" class="btn btn-smx btn-outline-primary removeforprinter"><i class="far fa-file-alt"></i>Details</a>
+                            <a asp-controller="Product" asp-action="Delete" asp-area="Admin" asp-route-id="@obj.Id" class="btn btn-smx btn-outline-danger removeforprinter"><i class="fa fa-trash"></i>Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
